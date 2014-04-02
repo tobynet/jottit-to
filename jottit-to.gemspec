@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jottit/to/version'
+require 'jottit/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "jottit-to"
-  spec.version       = Jottit::To::VERSION
+  spec.version       = JottitTo::VERSION
   spec.authors       = ["toooooooby"]
   spec.email         = ["toby.net.info.mail+git@gmail.com"]
   spec.summary       = %q{Jottit list page converter CLI}
@@ -18,6 +18,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency 'thor', '~> 0.19'
+  spec.add_dependency 'nokogiri', '~> 1.6'
+  spec.add_dependency 'builder', '~> 3.2'
   spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency 'rake', '~> 10.2'
+  spec.add_development_dependency 'webmock', '~> 1.17'
 end
