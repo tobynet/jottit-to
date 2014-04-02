@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Jottit::To::VERSION
   spec.authors       = ["toooooooby"]
   spec.email         = ["toby.net.info.mail+git@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Jottit list page converter CLI}
+  spec.description   = %q{a tool for converting a list in jottit page to any formats}
+  spec.homepage      = "https://github.com/toooooooby/jottit-to"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
