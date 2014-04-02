@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["toooooooby"]
   spec.email         = ["toby.net.info.mail+git@gmail.com"]
   spec.summary       = %q{Jottit list page converter CLI}
-  spec.description   = %q{a tool for converting a list in jottit page to any formats}
+  spec.description   = %q{A tool for converting a list in jottit page to any formats}
   spec.homepage      = "https://github.com/toooooooby/jottit-to"
   spec.license       = "MIT"
 

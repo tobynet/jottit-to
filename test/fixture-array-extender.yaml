@@ -1,1 +1,29 @@
-- 
+- src: [foo, bar, buzz, piyo]
+  expected_as_xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <items>
+      <item>foo</item>
+      <item>bar</item>
+      <item>buzz</item>
+      <item>piyo</item>
+    </items>
+  expected_as_text: |-
+    foo
+    bar
+    buzz
+    piyo
+  expected_as_json: '["foo","bar","buzz","piyo"]'
+  expected_as_yaml: |
+    ---
+    - foo
+    - bar
+    - buzz
+    - piyo
+- src: []
+  expected_as_xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <items>
+    </items>
+  expected_as_text: ''
+  expected_as_json: '[]'
+  expected_as_yaml: "--- []\n"

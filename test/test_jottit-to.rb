@@ -1,10 +1,16 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-$VERBOSE = true
 require 'minitest/autorun'
-begin require 'minitest/pride' rescue LoadError end # Ignore error for old ruby
+
+# For colorful testing
+begin
+  require 'minitest/pride' 
+rescue LoadError
+  # Ignore an error for old ruby
+end if $stdout.isatty
 
 require 'webmock/minitest'
+require 'yaml'
 
 require_relative '../lib/jottit-to'
 
@@ -50,107 +56,38 @@ describe JottitTo do
     items = JottitTo.parse_uri('http://www.example.com/')
     items.must_equal %w(foo bar buzz piyo)
   end
-
 end
 
 describe JottitTo::ArrayExtender do
   it 'can convert self to xml' do
-    test_items = [
-      {
-        src: %w(foo bar buzz piyo), 
-        expected: <<-EOD
-<?xml version="1.0" encoding="UTF-8"?>
-<items>
-  <item>foo</item>
-  <item>bar</item>
-  <item>buzz</item>
-  <item>piyo</item>
-</items>
-        EOD
-      },
-      {
-        src: [], 
-        expected: <<-EOD
-<?xml version="1.0" encoding="UTF-8"?>
-<items>
-</items>
-        EOD
-      }
-    ]
-
-    test_items.each do |item|
-      list = item[:src].dup
-      list.extend JottitTo::ArrayExtender
-      list.to_xml.must_equal item[:expected]
-    end
+    fixtures.each{|item, array|
+      array.to_xml.must_equal item['expected_as_xml'] }
   end
 
   it 'can convert self to text' do
-    test_items = [
-      {
-        src: %w(foo bar buzz piyo), 
-        expected: <<-EOD.chomp
-foo
-bar
-buzz
-piyo
-        EOD
-      },
-      {
-        src: [], 
-        expected: ''
-      }
-    ]
-
-    test_items.each do |item|
-      list = item[:src].dup
-      list.extend JottitTo::ArrayExtender
-      list.to_text.must_equal item[:expected]
-    end
+    fixtures.each{|item, array|
+      array.to_text.must_equal item['expected_as_text'] }
   end
   
   it 'can convert self to json' do
-    test_items = [
-      {
-        src: %w(foo bar buzz piyo), 
-        expected: '["foo","bar","buzz","piyo"]'
-      },
-      {
-        src: [], 
-        expected: '[]'
-      }
-    ]
-
-    test_items.each do |item|
-      list = item[:src].dup
-      list.extend JottitTo::ArrayExtender
-      list.to_json.must_equal item[:expected]
-    end
+    fixtures.each{|item, array|
+      array.to_json.must_equal item['expected_as_json'] }
   end
 
   it 'can convert self to yaml' do
-    test_items = [
-      {
-        src: %w(foo bar buzz piyo), 
-        expected: <<-EOD
----
-- foo
-- bar
-- buzz
-- piyo
-        EOD
-      },
-      {
-        src: [], 
-        expected: "--- []\n"
-      }
-    ]
+    fixtures.each{|item, array|
+      array.to_yaml.must_equal item['expected_as_yaml'] }
+  end
 
-    test_items.each do |item|
-      list = item[:src].dup
-      list.extend JottitTo::ArrayExtender
-      list.to_yaml.must_equal item[:expected]
-    end
+  def fixtures
+    @yaml ||= YAML.load File.read(
+      File.join(File.dirname(__FILE__), './fixture-array-extender.yaml'))
+
+    @yaml.map{|item|
+      array = item['src'].dup
+      array.extend(JottitTo::ArrayExtender)
+      [item, array]
+    }
   end
 end
 
