@@ -8,7 +8,7 @@ Jottit list page converter for CLI
 
 ## Usage
 
-As a tool for CLI:
+## As a tool for CLI:
 
 ```bash
 $ jottit-to json http://youpy.jottit.com/trivia
@@ -33,7 +33,7 @@ $ jottit-to xml http://youpy.jottit.com/trivia | head
  : 
 ```
 
-Applications for CLI:
+## Applications for CLI:
 
 
 * Fetch random one
@@ -60,7 +60,7 @@ Applications for CLI:
     2014-04-02 21:42:12 +0900
     ```
 
-As a library of ruby:
+## As a library of ruby:
 
 ```ruby
 require 'jottit-to'
