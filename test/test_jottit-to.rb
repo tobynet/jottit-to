@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
+require 'coveralls'
+Coveralls.wear!
+
 require 'minitest/autorun'
 
 # For colorful testing
