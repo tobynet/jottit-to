@@ -1,5 +1,6 @@
 # JottitTo
-[![Gem Version](https://badge.fury.io/rb/jottit-to.png)](http://badge.fury.io/rb/jottit-to) [![Build Status](https://travis-ci.org/toooooooby/jottit-to.png?branch=master)](https://travis-ci.org/toooooooby/jottit-to) [![Dependency Status](https://gemnasium.com/toooooooby/jottit-to.png)](https://gemnasium.com/toooooooby/jottit-to) [![Code Climate](https://codeclimate.com/github/toooooooby/jottit-to.png)](https://codeclimate.com/github/toooooooby/jottit-to) [![Coverage Status](https://coveralls.io/repos/toooooooby/jottit-to/badge.png?branch=master)](https://coveralls.io/r/toooooooby/jottit-to)
+[![Gem Version](https://badge.fury.io/rb/jottit-to.png)](http://badge.fury.io/rb/jottit-to) [![Build Status](https://travis-ci.org/toooooooby/jottit-to.svg?branch=master)](https://travis-ci.org/toooooooby/jottit-to) [![Dependency Status](https://gemnasium.com/toooooooby/jottit-to.png)](https://gemnasium.com/toooooooby/jottit-to) [![Code Climate](https://codeclimate.com/github/toooooooby/jottit-to.png)](https://codeclimate.com/github/toooooooby/jottit-to) [![Coverage Status](https://coveralls.io/repos/toooooooby/jottit-to/badge.png?branch=master)](https://coveralls.io/r/toooooooby/jottit-to)
+
 
 Jottit list page converter for CLI
 
