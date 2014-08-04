@@ -35,8 +35,9 @@ module JottitTo
     map '-v' => :version
     def version
       require_relative './jottit/version'
-      say "Jottit-to #{JottitTo::VERSION}"
+      puts "Jottit-to #{JottitTo::VERSION}"
     end
+
   end
 
 

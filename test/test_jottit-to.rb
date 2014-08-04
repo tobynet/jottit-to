@@ -17,6 +17,12 @@ require 'yaml'
 
 require_relative '../lib/jottit-to'
 
+def html_of_fixture
+  #raw_html = URI('http://youpy.jottit.com/trivia').read
+  File.read(File.join(File.dirname(__FILE__), './fixture.html'))
+end
+
+
 describe JottitTo do
   it 'can get normalized uri' do
     test_uris = [
@@ -40,11 +46,6 @@ describe JottitTo do
     test_uris.each do |data|
       JottitTo.normalize_uri(data[:src]).must_equal data[:expected]
     end
-  end
-
-  def html_of_fixture
-    #raw_html = URI('http://youpy.jottit.com/trivia').read
-    File.read(File.join(File.dirname(__FILE__), './fixture.html'))
   end
 
   it 'can parse a structure like a site of jottit' do
@@ -91,6 +92,25 @@ describe JottitTo::ArrayExtender do
       array.extend(JottitTo::ArrayExtender)
       [item, array]
     }
+  end
+end
+
+describe JottitTo::CLI do
+  it 'text' do
+    # make stub with webmock
+    stub_request(:get, 'example.com').to_return(body: html_of_fixture)
+
+    old_stdout = $stdout
+    begin
+      $stdout = StringIO.new
+      cli = JottitTo::CLI.new
+      cli.invoke(:text, ['http://example.com/'])
+
+      $stdout.rewind
+      $stdout.read.must_equal "foo\nbar\nbuzz\npiyo\n"
+    ensure
+      $stdout = old_stdout
+    end
   end
 end
 
