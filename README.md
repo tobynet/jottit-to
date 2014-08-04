@@ -35,6 +35,18 @@ $ jotto xml http://youpy.jottit.com/trivia | head
  : 
 ```
 
+Show help
+
+```bash
+$ jotto help
+Commands:
+  jotto help [COMMAND]  # Describe available commands or one specific command
+  jotto json URI        # Show as json
+  jotto text URI        # Show as text
+  :
+  :
+```
+
 ## Applications for CLI:
 
 
