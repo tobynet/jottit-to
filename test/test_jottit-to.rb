@@ -7,7 +7,7 @@ require 'minitest/autorun'
 
 # For colorful testing
 begin
-  require 'minitest/pride' 
+  require 'minitest/pride'
 rescue LoadError
   # Ignore an error for old ruby
 end if $stdout.isatty
@@ -18,10 +18,9 @@ require 'yaml'
 require_relative '../lib/jottit-to'
 
 def html_of_fixture
-  #raw_html = URI('http://youpy.jottit.com/trivia').read
+  # raw_html = URI('http://youpy.jottit.com/trivia').read
   File.read(File.join(File.dirname(__FILE__), './fixture.html'))
 end
-
 
 describe JottitTo do
   it 'can get normalized uri' do
@@ -31,15 +30,15 @@ describe JottitTo do
         expected: 'http://youpy.jottit.com/trivia'
       },
       {
-        src: 'http://youpy.jottit.com/trivia#fuba', 
+        src: 'http://youpy.jottit.com/trivia#fuba',
         expected: 'http://youpy.jottit.com/trivia'
       },
       {
-        src: 'http://youpy.jottit.com/#aaa', 
+        src: 'http://youpy.jottit.com/#aaa',
         expected: 'http://youpy.jottit.com/'
       },
       {
-        src: 'http://youpy.jottit.com/trivia', 
+        src: 'http://youpy.jottit.com/trivia',
         expected: 'http://youpy.jottit.com/trivia'
       }
     ]
@@ -62,36 +61,34 @@ describe JottitTo do
   end
 end
 
+def fixtures
+  @yaml ||= YAML.load File.read(
+    File.join(File.dirname(__FILE__), './fixture-array-extender.yaml'))
+
+  @yaml.map do |item|
+    array = item['src'].dup
+    array.extend(JottitTo::ArrayExtender)
+    [item, array]
+  end
+end
+
 describe JottitTo::ArrayExtender do
-  it 'can convert self to xml' do
-    fixtures.each{|item, array|
-      array.to_xml.must_equal item['expected_as_xml'] }
-  end
+  fixtures.each do |item, array|
+    it 'can convert self to xml' do
+      array.to_xml.must_equal item['expected_as_xml']
+    end
 
-  it 'can convert self to text' do
-    fixtures.each{|item, array|
-      array.to_text.must_equal item['expected_as_text'] }
-  end
-  
-  it 'can convert self to json' do
-    fixtures.each{|item, array|
-      array.to_json.must_equal item['expected_as_json'] }
-  end
+    it 'can convert self to text' do
+      array.to_text.must_equal item['expected_as_text']
+    end
 
-  it 'can convert self to yaml' do
-    fixtures.each{|item, array|
-      array.to_yaml.must_equal item['expected_as_yaml'] }
-  end
+    it 'can convert self to json' do
+      array.to_json.must_equal item['expected_as_json']
+    end
 
-  def fixtures
-    @yaml ||= YAML.load File.read(
-      File.join(File.dirname(__FILE__), './fixture-array-extender.yaml'))
-
-    @yaml.map{|item|
-      array = item['src'].dup
-      array.extend(JottitTo::ArrayExtender)
-      [item, array]
-    }
+    it 'can convert self to yaml' do
+      array.to_yaml.must_equal item['expected_as_yaml']
+    end
   end
 end
 
@@ -116,8 +113,9 @@ end
 
 describe 'bin/' do
   it 'works run(help)' do
-    io = IO.popen([File.join(File.dirname(__FILE__), '../bin/jottit-to'), err: [:child, :out]])
+    io = IO.popen([
+      File.join(File.dirname(__FILE__), '../bin/jottit-to'),
+      err: [:child, :out]])
     io.read.must_match(/Commands:/)
   end
 end
-
