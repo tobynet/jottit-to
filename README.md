@@ -1,5 +1,5 @@
 # JottitTo
-[![Gem Version](https://badge.fury.io/rb/jottit-to.png)](http://badge.fury.io/rb/jottit-to) [![Build Status](https://travis-ci.org/toooooooby/jottit-to.svg?branch=master)](https://travis-ci.org/toooooooby/jottit-to) [![Dependency Status](https://gemnasium.com/toooooooby/jottit-to.png)](https://gemnasium.com/toooooooby/jottit-to) [![Code Climate](https://codeclimate.com/github/toooooooby/jottit-to.png)](https://codeclimate.com/github/toooooooby/jottit-to) [![Coverage Status](https://coveralls.io/repos/toooooooby/jottit-to/badge.png?branch=master)](https://coveralls.io/r/toooooooby/jottit-to)
+[![Gem Version](https://badge.fury.io/rb/jottit-to.png)](http://badge.fury.io/rb/jottit-to) [![Build Status](https://travis-ci.org/tobynet/jottit-to.svg?branch=master)](https://travis-ci.org/tobynet/jottit-to) [![Dependency Status](https://gemnasium.com/tobynet/jottit-to.png)](https://gemnasium.com/tobynet/jottit-to) [![Code Climate](https://codeclimate.com/github/tobynet/jottit-to.png)](https://codeclimate.com/github/tobynet/jottit-to) [![Coverage Status](https://coveralls.io/repos/tobynet/jottit-to/badge.png?branch=master)](https://coveralls.io/r/tobynet/jottit-to)
 
 
 Jottit list page converter for CLI
@@ -53,7 +53,7 @@ $ jottit-to xml http://youpy.jottit.com/trivia | head
     2014-04-02 21:37:46 +0900
     ```
 
-* Tweet a trivia like yazawa using `YAZAWA` gem ( https://github.com/toooooooby/yazawa ) and tw
+* Tweet a trivia like yazawa using `YAZAWA` gem ( https://github.com/tobynet/yazawa ) and tw
 
     ```bash
     $ jottit-to text http://youpy.jottit.com/trivia | shuf -n 1 | yazawa | tw --pipe
