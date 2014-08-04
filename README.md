@@ -13,21 +13,21 @@ Jottit list page converter for CLI
 ## As a tool for CLI:
 
 ```bash
-$ jottit-to json http://youpy.jottit.com/trivia
+$ jotto json http://youpy.jottit.com/trivia
 ["Evernoteは象で動いている","CD音質を超えるデータはすべてハイレゾ", ...
 
-$ jottit-to yaml http://youpy.jottit.com/trivia | head
+$ jotto yaml http://youpy.jottit.com/trivia | head
 ---
 - Evernoteは象で動いている
 - CD音質を超えるデータはすべてハイレゾ
  :
 
-$ jottit-to text http://youpy.jottit.com/trivia | head
+$ jotto text http://youpy.jottit.com/trivia | head
 Evernoteは象で動いている
 CD音質を超えるデータはすべてハイレゾ
  :
 
-$ jottit-to xml http://youpy.jottit.com/trivia | head
+$ jotto xml http://youpy.jottit.com/trivia | head
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
   <item>Evernoteは象で動いている</item>
@@ -41,13 +41,13 @@ $ jottit-to xml http://youpy.jottit.com/trivia | head
 * Fetch random one
 
     ```bash
-    $ jottit-to text http://youpy.jottit.com/trivia | shuf -n 1
+    $ jotto text http://youpy.jottit.com/trivia | shuf -n 1
     高性能な機械は触ると少しひんやりする
     ```
 * Tweet a trivia with usging `tw` gem ( http://shokai.github.io/tw/ )
 
     ```bash
-    $ jottit-to text http://youpy.jottit.com/trivia | shuf -n 1 | tw --pipe
+    $ jotto text http://youpy.jottit.com/trivia | shuf -n 1 | tw --pipe
     首をボキボキ鳴らすと1トンの衝撃がかかる
     http://twitter.com/toby_net/status/451337693436198913
     2014-04-02 21:37:46 +0900
@@ -56,7 +56,7 @@ $ jottit-to xml http://youpy.jottit.com/trivia | head
 * Tweet a trivia like yazawa using `YAZAWA` gem ( https://github.com/tobynet/yazawa ) and tw
 
     ```bash
-    $ jottit-to text http://youpy.jottit.com/trivia | shuf -n 1 | yazawa | tw --pipe
+    $ jotto text http://youpy.jottit.com/trivia | shuf -n 1 | yazawa | tw --pipe
     『SOUJI』は人を裏切らない
     http://twitter.com/toby_net/status/451338808189911040
     2014-04-02 21:42:12 +0900
