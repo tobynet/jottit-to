@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/jottit-to'
+JottitTo::CLI.start

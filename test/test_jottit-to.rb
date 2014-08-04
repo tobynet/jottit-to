@@ -112,10 +112,12 @@ describe JottitTo::CLI do
 end
 
 describe 'bin/' do
-  it 'works run(help)' do
-    io = IO.popen([
-      File.join(File.dirname(__FILE__), '../bin/jottit-to'),
-      err: [:child, :out]])
-    io.read.must_match(/Commands:/)
+  ["jottit-to", "jotto"].each do |cmd_name|
+    it 'works run(help)' do
+      io = IO.popen([
+        File.join(File.dirname(__FILE__), "../bin/#{cmd_name}"),
+        err: [:child, :out]])
+      io.read.must_match(/Commands:/)
+    end
   end
 end
